@@ -39,7 +39,9 @@ export default function Mission() {
               polikultur penyerap karbon
             </span>{" "}
             yang menghasilkan{" "}
-            <span className="text-gradient-gold">kakao premium & kredit karbon</span>
+            <span className="text-gradient-gold">
+              kakao premium & kredit karbon
+            </span>
             ."
           </motion.blockquote>
         </div>
@@ -78,7 +80,8 @@ export default function Mission() {
                   className="text-sm text-white/65 leading-relaxed"
                   style={{ margin: 0 }}
                 >
-                  Sistem agroforestri Java Criollo menyerap ribuan ton CO₂ dari lahan marginal Gunung Kidul.
+                  Sistem agroforestri Java Criollo menyerap ribuan ton CO₂ dari
+                  lahan marginal Gunung Kidul.
                 </p>
               </div>
             </motion.div>
@@ -141,7 +144,8 @@ export default function Mission() {
                 className="text-sm text-green-200/50 leading-relaxed"
                 style={{ margin: 0 }}
               >
-                Setiap pohon Criollo dipantau — data terbuka untuk pembeli karbon & kakao.
+                Setiap pohon Criollo dipantau — data terbuka untuk pembeli
+                karbon & kakao.
               </p>
             </motion.div>
 
@@ -217,7 +221,8 @@ export default function Mission() {
                   className="text-sm text-white/65 leading-relaxed"
                   style={{ margin: 0 }}
                 >
-                  Pendapatan meningkat 3x melalui penjualan kakao premium & kredit karbon.
+                  Pendapatan meningkat 3x melalui penjualan kakao premium &
+                  kredit karbon.
                 </p>
               </div>
             </motion.div>
@@ -267,7 +272,8 @@ export default function Mission() {
                 className="text-sm text-gray-500 leading-relaxed"
                 style={{ margin: 0, maxWidth: "280px" }}
               >
-                Biji Java Criollo berkualitas tinggi untuk pasar cokelat premium dunia.
+                Biji Java Criollo berkualitas tinggi untuk pasar cokelat premium
+                dunia.
               </p>
             </motion.div>
           </div>

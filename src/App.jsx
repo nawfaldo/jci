@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import Hero from './components/Hero'
+import Comparison from './components/Comparison'
 import Mission from './components/Mission'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
@@ -27,6 +28,7 @@ export default function App() {
     <div className="min-h-screen bg-(--color-bg)">
       <main>
         <Hero />
+        <Comparison />
         <Mission />
         <CTA />
       </main>
