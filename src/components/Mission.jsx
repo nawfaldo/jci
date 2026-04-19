@@ -34,11 +34,12 @@ export default function Mission() {
             {...fadeUp(0.15)}
             className="font-display text-2xl sm:text-3xl md:text-4xl font-medium leading-snug tracking-tight text-(--color-text-primary)"
           >
-            "Menghapus jejak karbon secara masif dengan{" "}
+            "Merevitalisasi Java Criollo langka melalui{" "}
             <span className="text-gradient-emerald">
-              pertanian regeneratif presisi
+              polikultur penyerap karbon
             </span>{" "}
-            dan <span className="text-gradient-gold">agroforestri pintar</span>
+            yang menghasilkan{" "}
+            <span className="text-gradient-gold">kakao premium & kredit karbon</span>
             ."
           </motion.blockquote>
         </div>
@@ -71,13 +72,13 @@ export default function Mission() {
                   className="text-2xl md:text-3xl font-bold text-white leading-tight"
                   style={{ margin: "0 0 0.4rem 0" }}
                 >
-                  Penyerapan Karbon Aktif
+                  Polikultur Penyerap Karbon
                 </h3>
                 <p
                   className="text-sm text-white/65 leading-relaxed"
                   style={{ margin: 0 }}
                 >
-                  10.000+ pohon menyerap ribuan ton CO₂ setiap hari.
+                  Sistem agroforestri Java Criollo menyerap ribuan ton CO₂ dari lahan marginal Gunung Kidul.
                 </p>
               </div>
             </motion.div>
@@ -103,7 +104,7 @@ export default function Mission() {
                 className="text-sm md:text-base text-gray-400 leading-relaxed"
                 style={{ margin: 0 }}
               >
-                Total karbon diserap sepanjang masa
+                Ton CO₂ diserap — siap jual sebagai kredit karbon terverifikasi
               </span>
             </motion.div>
           </div>
@@ -128,19 +129,19 @@ export default function Mission() {
                 className="text-[10px] text-green-400 font-mono tracking-[0.2em] uppercase font-bold"
                 style={{ margin: "0 0 0.6rem 0" }}
               >
-                Smart Sensors
+                Digital Monitoring
               </span>
               <h3
                 className="text-xl md:text-2xl font-bold text-white leading-tight"
                 style={{ margin: "0 0 0.4rem 0" }}
               >
-                Monitoring Real‑Time
+                Transparansi IoT Real‑Time
               </h3>
               <p
                 className="text-sm text-green-200/50 leading-relaxed"
                 style={{ margin: 0 }}
               >
-                Kondisi tanah, kelembaban, dan kualitas udara terpantau 24/7.
+                Setiap pohon Criollo dipantau — data terbuka untuk pembeli karbon & kakao.
               </p>
             </motion.div>
 
@@ -179,7 +180,7 @@ export default function Mission() {
                 className="text-sm text-gray-400 leading-relaxed"
                 style={{ margin: 0 }}
               >
-                Hektar lahan direstorasi
+                Hektar lahan marginal menjadi kebun kakao produktif
               </span>
             </motion.div>
           </div>
@@ -216,7 +217,7 @@ export default function Mission() {
                   className="text-sm text-white/65 leading-relaxed"
                   style={{ margin: 0 }}
                 >
-                  Pendapatan meningkat 3x melalui akses pasar karbon global.
+                  Pendapatan meningkat 3x melalui penjualan kakao premium & kredit karbon.
                 </p>
               </div>
             </motion.div>
@@ -260,14 +261,13 @@ export default function Mission() {
                 className="text-xl md:text-2xl font-bold text-white leading-tight"
                 style={{ margin: "0 0 0.5rem 0" }}
               >
-                Kredit Karbon Terverifikasi
+                Kakao Premium Bernilai Ekspor
               </h3>
               <p
                 className="text-sm text-gray-500 leading-relaxed"
                 style={{ margin: 0, maxWidth: "280px" }}
               >
-                Setiap ton CO₂ divalidasi standar internasional untuk pasar
-                global.
+                Biji Java Criollo berkualitas tinggi untuk pasar cokelat premium dunia.
               </p>
             </motion.div>
           </div>

@@ -3,10 +3,10 @@ import { motion, useInView } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 const stats = [
-  { value: 250, suffix: "+", label: "Hektar Direstorasi" },
+  { value: 250, suffix: "+", label: "Hektar Lahan Marginal" },
   { value: 1200, suffix: "", label: "Petani Mitra" },
   { value: 4800, suffix: "t", label: "CO₂ Diserap/Tahun" },
-  { value: 3, suffix: "x", label: "Income Petani" },
+  { value: 3, suffix: "x", label: "Pendapatan Petani" },
 ];
 
 function AnimatedNumber({ value, suffix, inView }) {
@@ -83,8 +83,8 @@ export default function Hero() {
             className="text-base sm:text-lg text-(--color-text-secondary) max-w-md leading-relaxed"
           >
             Merevitalisasi kakao langka Java Criollo di lahan marginal Gunung
-            Kidul — melalui polikultur penyerap karbon yang menyejahterakan
-            petani dan meregenerasi bumi.
+            Kidul — menghasilkan biji kakao premium bernilai ekspor dan kredit
+            karbon terverifikasi melalui sistem polikultur regeneratif.
           </motion.p>
 
           {/* Stats row */}
@@ -153,13 +153,13 @@ export default function Hero() {
                     color: "text-green-600",
                   },
                   {
-                    label: "This Year",
-                    value: "170t",
-                    status: "on track",
+                    label: "Kakao Premium",
+                    value: "12t",
+                    status: "exported",
                     color: "text-green-600",
                   },
                   {
-                    label: "Active Trees",
+                    label: "Pohon Criollo",
                     value: "12,450",
                     status: "growing",
                     color: "text-amber-600",
@@ -167,8 +167,8 @@ export default function Hero() {
                   {
                     label: "Rate/Hectare",
                     value: "19.2t",
-                    status: "growing",
-                    color: "text-amber-600",
+                    status: "optimal",
+                    color: "text-green-600",
                   },
                 ].map((m) => (
                   <div
@@ -288,7 +288,7 @@ export default function Hero() {
                 className="mt-4 text-[11px] text-(--color-text-tertiary) text-center"
                 style={{ paddingTop: "1.5rem" }}
               >
-                Data real-time dari sensor IoT lahan mitra
+                Data real-time dari sensor IoT di lahan polikultur mitra
               </p>
             </div>
           </div>

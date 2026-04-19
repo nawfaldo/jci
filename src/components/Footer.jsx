@@ -33,12 +33,7 @@ export default function Footer() {
                   border: "1px solid rgba(167,243,208,0.3)",
                 }}
               >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 100 100"
-                  fill="none"
-                >
+                <svg width="14" height="14" viewBox="0 0 100 100" fill="none">
                   <path
                     d="M50 10 C30 20, 15 40, 20 60 C25 78, 42 90, 50 90 C58 90, 75 78, 80 60 C85 40, 70 20, 50 10Z"
                     stroke="#a7f3d0"
@@ -59,7 +54,7 @@ export default function Footer() {
               className="leading-relaxed text-center"
               style={{ fontSize: "0.875rem", color: "rgba(167,243,208,0.5)" }}
             >
-              Regenerative agro-technology dari Gunung Kidul untuk dunia.
+              Kakao premium & kredit karbon dari lahan regeneratif Gunung Kidul.
             </p>
           </div>
 
@@ -76,7 +71,10 @@ export default function Footer() {
             >
               Kontak
             </h4>
-            <ul className="flex flex-row flex-wrap items-center justify-center" style={{ gap: "1.5rem" }}>
+            <ul
+              className="flex flex-row flex-wrap items-center justify-center"
+              style={{ gap: "1.5rem" }}
+            >
               {kontakLinks.map((link) => (
                 <li key={link}>
                   <a
@@ -88,7 +86,9 @@ export default function Footer() {
                       textDecoration: "none",
                     }}
                     onMouseOver={(e) => (e.target.style.color = "white")}
-                    onMouseOut={(e) => (e.target.style.color = "rgba(255,255,255,0.55)")}
+                    onMouseOut={(e) =>
+                      (e.target.style.color = "rgba(255,255,255,0.55)")
+                    }
                   >
                     {link}
                   </a>
@@ -121,8 +121,12 @@ export default function Footer() {
                   color: "rgba(167,243,208,0.35)",
                   textDecoration: "none",
                 }}
-                onMouseOver={(e) => (e.target.style.color = "rgba(167,243,208,0.7)")}
-                onMouseOut={(e) => (e.target.style.color = "rgba(167,243,208,0.35)")}
+                onMouseOver={(e) =>
+                  (e.target.style.color = "rgba(167,243,208,0.7)")
+                }
+                onMouseOut={(e) =>
+                  (e.target.style.color = "rgba(167,243,208,0.35)")
+                }
               >
                 {item}
               </a>
@@ -132,7 +136,7 @@ export default function Footer() {
             className="text-center"
             style={{ fontSize: "0.75rem", color: "rgba(167,243,208,0.3)" }}
           >
-            © {new Date().getFullYear()} Java Criollo Impact. All rights
+            © {new Date().getFullYear()} The Criollo Sanctuary. All rights
             reserved.
           </p>
         </div>

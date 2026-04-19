@@ -85,7 +85,7 @@ export default function CTA() {
             className="font-mono uppercase font-semibold text-emerald-300"
             style={{ fontSize: "10px", letterSpacing: "0.15em" }}
           >
-            Pintu Kami Terbuka
+            Bergabung Bersama Kami
           </span>
         </motion.div>
 
@@ -97,7 +97,7 @@ export default function CTA() {
             margin: "0 0 1.25rem 0",
           }}
         >
-          Jadilah bagian dari{" "}
+          Investasi dalam{" "}
           <span
             style={{
               background: "linear-gradient(135deg, #34d399, #a7f3d0)",
@@ -105,9 +105,18 @@ export default function CTA() {
               WebkitTextFillColor: "transparent",
             }}
           >
-            revolusi hijau
+            kakao langka
           </span>{" "}
-          Indonesia
+          &{" "}
+          <span
+            style={{
+              background: "linear-gradient(135deg, #fbbf24, #f59e0b)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            kredit karbon
+          </span>
         </motion.h2>
 
         <motion.p
@@ -119,8 +128,8 @@ export default function CTA() {
             maxWidth: "520px",
           }}
         >
-          Pembeli kakao premium, investor berdampak, atau mitra yang ingin
-          meregenerasi bumi — mari berkolaborasi.
+          Beli kakao premium Java Criollo, investasi kredit karbon
+          terverifikasi, atau bermitra memulihkan lahan marginal Gunung Kidul.
         </motion.p>
 
         {/* Buttons */}
