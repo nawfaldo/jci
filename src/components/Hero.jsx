@@ -1,314 +1,371 @@
-import { useRef, useState, useEffect } from "react";
-import { motion, useInView } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { useRef, useEffect, useState } from "react";
+import { motion, useInView, animate } from "framer-motion";
 
-const stats = [
-  { value: 250, suffix: "+", label: "Hektar Lahan Marginal" },
-  { value: 1200, suffix: "", label: "Petani Mitra" },
-  { value: 4800, suffix: "t", label: "CO₂ Diserap/Tahun" },
-  { value: 3, suffix: "x", label: "Pendapatan Petani" },
-];
-
-function AnimatedNumber({ value, suffix, inView }) {
-  const [display, setDisplay] = useState(0);
+const CountUpNumber = ({ valueStr }) => {
+  const [displayValue, setDisplayValue] = useState("0");
+  const nodeRef = useRef(null);
+  const inView = useInView(nodeRef, { once: true, margin: "-50px" });
 
   useEffect(() => {
-    if (!inView) return;
-    const duration = 2000;
-    const startTime = performance.now();
+    if (inView) {
+      const numMatch = valueStr.replace(/,/g, "").match(/[\d.]+/);
+      if (!numMatch) {
+        setDisplayValue(valueStr);
+        return;
+      }
+      const finalNum = parseFloat(numMatch[0]);
+      const suffixMatch = valueStr.replace(/,/g, "").match(/[^\d.]+/);
+      const suffix = suffixMatch ? suffixMatch[0] : "";
 
-    function tick(now) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.floor(eased * value));
-      if (progress < 1) requestAnimationFrame(tick);
+      const isInteger = finalNum % 1 === 0;
+
+      const controls = animate(0, finalNum, {
+        duration: 2,
+        ease: "easeOut",
+        onUpdate: (val) => {
+          let formatted = isInteger
+            ? Math.round(val).toLocaleString("en-US")
+            : val.toFixed(1);
+          setDisplayValue(formatted + suffix);
+        },
+      });
+      return () => controls.stop();
     }
-    requestAnimationFrame(tick);
-  }, [inView, value]);
+  }, [inView, valueStr]);
 
-  const formatted =
-    value >= 1000 ? display.toLocaleString("en-US") : display.toString();
-
-  return (
-    <span>
-      {formatted}
-      {suffix}
-    </span>
-  );
-}
+  return <span ref={nodeRef}>{displayValue}</span>;
+};
+import cacaoImg from "../img/cacao.png";
+import plantImg from "../img/plant.png";
+import carbonImg from "../img/carbon.png";
 
 export default function Hero() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
 
+  const chartData = [
+    { m: "JAN", v: 35 },
+    { m: "FEB", v: 42 },
+    { m: "MAR", v: 38 },
+    { m: "APR", v: 33 },
+    { m: "MEI", v: 0 },
+    { m: "JUN", v: 0 },
+    { m: "JUL", v: 0 },
+    { m: "AGT", v: 0 },
+    { m: "SEP", v: 0 },
+    { m: "OKT", v: 0 },
+    { m: "NOV", v: 0 },
+    { m: "DES", v: 0 },
+  ];
+
   return (
-    <section
-      ref={ref}
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden px-6 sm:px-10 py-32"
+    <div
+      className="w-full flex justify-center bg-white font-sans"
+      style={{
+        paddingTop: "60px",
+      }}
     >
-      {/* Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-green-100/60 via-green-50/30 to-transparent blur-3xl" />
-        <div className="absolute top-1/3 right-0 w-[600px] h-[400px] rounded-full bg-gradient-to-br from-amber-100/30 via-transparent to-transparent blur-3xl" />
-      </div>
-
-      {/* Two-column layout */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        {/* ===== LEFT — Hero Text ===== */}
-        <div
-          className="flex flex-col items-center lg:items-start text-center lg:text-left"
-          style={{ gap: "2.5rem" }}
-        >
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[0.9]"
-          >
-            <span className="block text-(--color-text-primary)">
-              Java Criollo
-            </span>
-            <span className="block text-gradient-earth animate-gradient mt-2">
-              Impact
-            </span>
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="text-base sm:text-lg text-(--color-text-secondary) max-w-md leading-relaxed"
-          >
-            Merevitalisasi kakao langka Java Criollo di lahan marginal Gunung
-            Kidul — menghasilkan biji kakao premium bernilai ekspor dan kredit
-            karbon terverifikasi melalui sistem polikultur regeneratif.
-          </motion.p>
-
-          {/* Stats row */}
+      <section ref={ref} className="w-full max-w-[1280px] flex flex-col gap-6">
+        {/* Top Row - Two Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-auto md:h-[550px]">
+          {/* Java Criollo Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="w-full grid grid-cols-4 gap-0"
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+            className="bg-[#f6f6f6] rounded-none flex flex-col relative overflow-hidden h-[500px] md:h-full"
+            style={{
+              paddingLeft: "20px",
+              paddingTop: "20px",
+              paddingRight: "20px",
+            }}
           >
-            {stats.map((stat, i) => (
-              <div
-                key={stat.label}
-                className={`text-center lg:text-left pb-4 ${i > 0 ? "pl-4 lg:pl-5" : ""}`}
+            {/* Text Box */}
+            <div className="z-10 w-full max-w-[340px] text-left">
+              <h2
+                className="text-[24px] sm:text-4xl font-semibold text-gray-900 tracking-tight"
+                style={{ marginBottom: "12px" }}
               >
-                <div className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-gradient-gold leading-none">
-                  <AnimatedNumber
-                    value={stat.value}
-                    suffix={stat.suffix}
-                    inView={inView}
-                  />
-                </div>
-                <div className="text-[10px] sm:text-[11px] text-(--color-text-tertiary) mt-1.5 leading-tight">
-                  {stat.label}
-                </div>
+                Java Criollo
+              </h2>
+              <p
+                className="text-gray-600 font-light text-[15px] leading-relaxed"
+                style={{ marginBottom: "14px" }}
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor
+              </p>
+              <div className="flex justify-start" style={{ gap: "12px" }}>
+                <button
+                  className="bg-[#5d8b44] text-white text-[14px] font-medium hover:bg-[#4d7537] rounded-none"
+                  style={{ padding: "10px 24px" }}
+                >
+                  Lebih detail
+                </button>
+                <button
+                  className="border border-[#5d8b44] text-[#5d8b44] bg-transparent text-[14px] font-medium hover:bg-gray-50 rounded-none"
+                  style={{ padding: "10px 24px" }}
+                >
+                  Beli
+                </button>
               </div>
-            ))}
+            </div>
+            {/* Image (Bottom Center) */}
+            <img
+              src={cacaoImg}
+              alt="Cacao Pods"
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] max-w-[400px] object-cover object-top"
+            />
+          </motion.div>
+
+          {/* Tanam Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="bg-[#f6f6f6] rounded-none flex flex-col relative overflow-hidden h-[500px] md:h-full"
+            style={{
+              paddingLeft: "20px",
+              paddingTop: "20px",
+              paddingRight: "20px",
+            }}
+          >
+            {/* Text Box */}
+            <div className="z-10 w-full max-w-[340px] text-left">
+              <h2
+                className="text-[24px] sm:text-4xl font-semibold text-gray-900 tracking-tight"
+                style={{ marginBottom: "12px" }}
+              >
+                Tanam
+              </h2>
+              <p
+                className="text-gray-600 font-light text-[14px] leading-relaxed"
+                style={{ marginBottom: "14px" }}
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor
+              </p>
+              <div className="flex justify-start" style={{ gap: "12px" }}>
+                <button
+                  className="bg-[#5d8b44] text-white text-[14px] font-medium hover:bg-[#4d7537] rounded-none"
+                  style={{ padding: "10px 24px" }}
+                >
+                  Lebih detail
+                </button>
+                <button
+                  className="border border-[#5d8b44] text-[#5d8b44] bg-transparent text-[14px] font-medium hover:bg-gray-50 rounded-none"
+                  style={{ padding: "10px 24px" }}
+                >
+                  Beli
+                </button>
+              </div>
+            </div>
+            {/* Image (Bottom Right) */}
+            <img
+              src={plantImg}
+              alt="Planting"
+              className="absolute bottom-0 right-0 w-[95%] sm:w-[90%] max-w-[500px] object-contain translate-x-12 translate-y-16"
+            />
           </motion.div>
         </div>
 
-        {/* ===== RIGHT — Dashboard Mockup ===== */}
+        {/* Bottom Row - Karbon Card */}
         <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.96 }}
-          animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-          transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full flex justify-center lg:justify-end"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+          className="rounded-none overflow-hidden flex flex-col lg:flex-row relative mt-2 min-h-[500px]"
+          style={{ background: "linear-gradient(to bottom, #91C8E4, #E8F9FF)" }}
         >
-          <div className="w-full overflow-hidden">
-            {/* Dashboard Header */}
-            <div
-              className="flex items-center justify-start"
-              style={{ padding: "0 1.5rem" }}
-            >
-              <div
-                className="flex items-center gap-2.5"
-                style={{ marginBottom: "-0.5rem" }}
+          {/* Left Content */}
+          <div
+            className="z-20 w-full lg:w-[45%] flex flex-col pb-[320px] lg:pb-20 relative"
+            style={{
+              paddingLeft: "20px",
+              paddingTop: "20px",
+              paddingRight: "20px",
+            }}
+          >
+            <div className="z-20 w-full max-w-[340px] text-left">
+              <h2
+                className="text-[24px] sm:text-4xl font-semibold text-white tracking-tight"
+                style={{ marginBottom: "12px" }}
               >
-                <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-xs text-(--color-text-primary) font-semibold font-mono tracking-wide">
-                  LIVE MONITORING
-                </span>
+                Karbon
+              </h2>
+              <p
+                className="text-white/90 text-[14px] font-light leading-relaxed"
+                style={{ marginBottom: "14px" }}
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor
+              </p>
+              <div className="flex justify-start" style={{ gap: "12px" }}>
+                <button
+                  className="bg-[#5d8b44] text-white text-[14px] font-medium hover:bg-[#4d7537] rounded-none"
+                  style={{ padding: "10px 24px" }}
+                >
+                  Lebih detail
+                </button>
+                <button
+                  className="border border-[#5d8b44] text-[#5d8b44] bg-transparent text-[15px] font-medium hover:bg-gray-50 rounded-none"
+                  style={{ padding: "10px 24px" }}
+                >
+                  Beli
+                </button>
               </div>
             </div>
+            {/* Carbon Factory Image (Bottom Left) */}
+            <img
+              src={carbonImg}
+              alt="Carbon Factory"
+              className="absolute bottom-0 left-0 w-[110%] sm:w-[100%] max-w-[480px] object-contain z-10 translate-y-4 -translate-x-[2%]"
+            />
+          </div>
 
-            {/* Dashboard Body */}
-            <div style={{ padding: "1.5rem" }}>
-              {/* Metric cards */}
-              <div
-                className="grid grid-cols-2 gap-3 sm:gap-4 mb-5 sm:mb-6"
-                style={{ gap: "1rem", marginBottom: "1.5rem" }}
-              >
-                {[
-                  {
-                    label: "All-Time Carbon",
-                    value: "4,800t",
-                    status: "verified",
-                    color: "text-green-600",
-                  },
-                  {
-                    label: "Kakao Premium",
-                    value: "12t",
-                    status: "exported",
-                    color: "text-green-600",
-                  },
-                  {
-                    label: "Pohon Criollo",
-                    value: "12,450",
-                    status: "growing",
-                    color: "text-amber-600",
-                  },
-                  {
-                    label: "Rate/Hectare",
-                    value: "19.2t",
-                    status: "optimal",
-                    color: "text-green-600",
-                  },
-                ].map((m) => (
-                  <div
-                    key={m.label}
-                    className="p-4 sm:p-5 rounded-xl bg-gray-50 border border-gray-100"
-                    style={{ padding: "1.25rem" }}
-                  >
-                    <div
-                      className="flex items-center justify-between mb-2"
-                      style={{ marginBottom: "0.5rem" }}
+          {/* Right Content - Dashboard */}
+          <div
+            className="z-20 w-full lg:w-[55%] flex flex-col justify-center"
+            style={{
+              paddingRight: "20px",
+              paddingLeft: "80px",
+              paddingBottom: "40px",
+              paddingTop: "30px",
+            }}
+          >
+            <div
+              className="flex items-center gap-2"
+              style={{ marginBottom: "16px" }}
+            >
+              <motion.div
+                className="w-2.5 h-2.5 rounded-full"
+                style={{ backgroundColor: "#22c55e" }}
+                animate={{ opacity: [0.3, 1, 0.3] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <span className="font-mono text-[10px] font-bold text-gray-800 uppercase tracking-widest">
+                LIVE MONITORING
+              </span>
+            </div>
+
+            <div
+              className="grid grid-cols-2"
+              style={{ gap: "10px", marginBottom: "10px" }}
+            >
+              {[
+                {
+                  label: "ALL-TIME CARBON",
+                  value: "4,800t",
+                  status: "verified",
+                  statusColor: "#22c55e",
+                },
+                {
+                  label: "THIS YEAR",
+                  value: "12t",
+                  status: "on-track",
+                  statusColor: "#22c55e",
+                },
+                {
+                  label: "JUMLAH POHON",
+                  value: "12,450",
+                  status: "growing",
+                  statusColor: "#ea580c",
+                },
+                {
+                  label: "LUAS LAHAN",
+                  value: "19.2h",
+                  status: "growing",
+                  statusColor: "#ea580c",
+                },
+              ].map((m) => (
+                <div
+                  key={m.label}
+                  className="bg-[#fafafa] rounded-[16px]"
+                  style={{
+                    padding: "20px 24px",
+                    border: "1px solid #f1f5f9",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.02)",
+                  }}
+                >
+                  <div className="flex items-center justify-between mb-4 gap-2">
+                    <span className="text-[10px] text-gray-400 font-light tracking-wider uppercase truncate">
+                      {m.label}
+                    </span>
+                    <span
+                      className="text-[10px] font-semibold"
+                      style={{ color: m.statusColor }}
                     >
-                      <span className="text-[10px] sm:text-[11px] text-(--color-text-tertiary) uppercase tracking-wider font-medium">
-                        {m.label}
-                      </span>
-                      <span
-                        className={`text-[10px] sm:text-[11px] ${m.color} font-medium`}
+                      {m.status}
+                    </span>
+                  </div>
+                  <div className="text-[38px] sm:text-[32px] tracking-tight font-black text-gray-800 leading-none">
+                    <CountUpNumber valueStr={m.value} />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Chart */}
+            <div
+              className="bg-[#fafafa] rounded-[16px]"
+              style={{
+                padding: "20px 24px",
+                border: "1px solid #f1f5f9",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.02)",
+              }}
+            >
+              <div className="text-[10px] text-gray-400 font-bold tracking-wider uppercase mb-10">
+                KARBON 2026
+              </div>
+
+              <div className="flex items-end gap-1.5 h-32 w-full mt-2">
+                {chartData.map((d, i) => (
+                  <div
+                    key={i}
+                    className="flex-1 h-full flex flex-col justify-end group relative"
+                  >
+                    {d.v > 0 ? (
+                      <motion.div
+                        initial={{ height: 0 }}
+                        animate={
+                          inView ? { height: `${(d.v / 60) * 100}%` } : {}
+                        }
+                        transition={{ duration: 0.8, delay: 0.2 + i * 0.05 }}
+                        className="w-full rounded-t-[4px] relative"
+                        style={{
+                          backgroundImage:
+                            "linear-gradient(to bottom, #86efac, #22c55e)",
+                        }}
                       >
-                        {m.status}
-                      </span>
-                    </div>
-                    <div className="text-2xl sm:text-3xl font-display font-bold text-(--color-text-primary) leading-none">
-                      {m.value}
-                    </div>
+                        <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold text-[#3ea83e]">
+                          {d.v}
+                        </span>
+                      </motion.div>
+                    ) : (
+                      <div className="w-full h-[1px] bg-gray-200" />
+                    )}
                   </div>
                 ))}
               </div>
 
-              {/* Chart */}
-              <div
-                className="rounded-xl bg-gray-50 border border-gray-100 p-5 sm:p-6"
-                style={{ marginTop: "1rem", padding: "1.5rem" }}
-              >
-                <div
-                  className="flex items-center justify-between mb-4"
-                  style={{ marginBottom: "1rem" }}
-                >
-                  <span className="text-[10px] sm:text-[11px] text-(--color-text-tertiary) uppercase tracking-wider font-medium">
-                    Carbon Sequestration 2026
-                  </span>
-                </div>
-
-                {/* Bars */}
-                <div className="flex items-end gap-1 h-20 sm:h-24 w-full pt-4 mt-2">
-                  {[
-                    { m: "Jan", v: 35 },
-                    { m: "Feb", v: 42 },
-                    { m: "Mar", v: 38 },
-                    { m: "Apr", v: 55 },
-                    { m: "Mei", v: 0 },
-                    { m: "Jun", v: 0 },
-                    { m: "Jul", v: 0 },
-                    { m: "Agt", v: 0 },
-                    { m: "Sep", v: 0 },
-                    { m: "Okt", v: 0 },
-                    { m: "Nov", v: 0 },
-                    { m: "Des", v: 0 },
-                  ].map((d, i) => (
-                    <div
-                      key={i}
-                      className="flex-1 h-full flex flex-col justify-end"
-                    >
-                      {d.v > 0 ? (
-                        <motion.div
-                          initial={{ height: 0 }}
-                          animate={inView ? { height: `${d.v}%` } : {}}
-                          transition={{ duration: 0.6, delay: 1.0 + i * 0.06 }}
-                          className="w-full rounded-t-sm bg-gradient-to-t from-green-600 to-green-400 relative"
-                        >
-                          <motion.span
-                            initial={{ opacity: 0 }}
-                            animate={inView ? { opacity: 1 } : { opacity: 0 }}
-                            transition={{
-                              duration: 0.3,
-                              delay: 1.5 + i * 0.06,
-                            }}
-                            className="absolute -top-[1.1rem] left-1/2 -translate-x-1/2 text-[8px] sm:text-[9px] font-mono font-bold text-green-700"
-                          >
-                            {d.v}
-                          </motion.span>
-                        </motion.div>
-                      ) : (
-                        <div className="w-full h-[2px] rounded-full bg-gray-200" />
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                {/* X-Axis Labels */}
-                <div className="flex items-center gap-1 w-full mt-2">
-                  {[
-                    "Jan",
-                    "Feb",
-                    "Mar",
-                    "Apr",
-                    "Mei",
-                    "Jun",
-                    "Jul",
-                    "Agt",
-                    "Sep",
-                    "Okt",
-                    "Nov",
-                    "Des",
-                  ].map((m, i) => (
-                    <div key={i} className="flex-1 text-center">
-                      <span
-                        className={`text-[8px] sm:text-[9px] uppercase tracking-tighter ${i > 3 ? "text-gray-300" : "text-(--color-text-tertiary)"}`}
-                      >
-                        {m}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+              {/* X-Axis */}
+              <div className="flex items-center gap-1.5 w-full mt-3">
+                {chartData.map((d, i) => (
+                  <div key={i} className="flex-1 text-center">
+                    <span className="text-[9px] sm:text-[10px] uppercase font-medium text-gray-400">
+                      {d.m}
+                    </span>
+                  </div>
+                ))}
               </div>
-
-              {/* Footer */}
-              <p
-                className="mt-4 text-[11px] text-(--color-text-tertiary) text-center"
-                style={{ paddingTop: "1.5rem" }}
-              >
-                Data real-time dari sensor IoT di lahan polikultur mitra
-              </p>
             </div>
           </div>
         </motion.div>
-      </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: [0, 8, 0] }}
-        transition={{
-          duration: 2,
-          delay: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-400"
-      >
-        <ChevronDown className="w-6 h-6" />
-      </motion.div>
-    </section>
+      </section>
+    </div>
   );
 }

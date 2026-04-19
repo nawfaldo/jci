@@ -3,7 +3,7 @@
 /* ===== Java Criollo Impact — Light Theme ===== */
 @theme {
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-display: "Inter", system-ui, -apple-system, sans-serif;
 
   /* Light clean palette */
   --color-bg: #ffffff;
