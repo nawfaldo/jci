@@ -117,7 +117,7 @@ export default function Mission() {
             className="grid grid-cols-1 md:grid-cols-3"
             style={{ gap: "1rem" }}
           >
-            {/* Dark text card */}
+            {/* Light text card */}
             <motion.div
               {...fadeUp(0.5)}
               className="flex flex-col justify-end"
@@ -125,23 +125,23 @@ export default function Mission() {
                 borderRadius: "1.5rem",
                 height: "280px",
                 padding: "2rem",
-                background: "#1a3a2a",
+                background: "#f5f5f7",
               }}
             >
               <span
-                className="text-[10px] text-green-400 font-mono tracking-[0.2em] uppercase font-bold"
+                className="text-[10px] text-green-600 font-mono tracking-[0.2em] uppercase font-bold"
                 style={{ margin: "0 0 0.6rem 0" }}
               >
                 Digital Monitoring
               </span>
               <h3
-                className="text-xl md:text-2xl font-bold text-white leading-tight"
+                className="text-xl md:text-2xl font-bold text-gray-900 leading-tight"
                 style={{ margin: "0 0 0.4rem 0" }}
               >
                 Transparansi IoT Real‑Time
               </h3>
               <p
-                className="text-sm text-green-200/50 leading-relaxed"
+                className="text-sm text-gray-500 leading-relaxed"
                 style={{ margin: 0 }}
               >
                 Setiap pohon Criollo dipantau — data terbuka untuk pembeli
@@ -227,7 +227,7 @@ export default function Mission() {
               </div>
             </motion.div>
 
-            {/* Dark centered card */}
+            {/* Light centered card */}
             <motion.div
               {...fadeUp(0.9)}
               className="flex flex-col items-center justify-center text-center"
@@ -235,7 +235,7 @@ export default function Mission() {
                 borderRadius: "1.5rem",
                 height: "320px",
                 padding: "2.5rem 2rem",
-                background: "#111111",
+                background: "#f5f5f7",
               }}
             >
               <div
@@ -249,7 +249,7 @@ export default function Mission() {
                 }}
               >
                 <svg
-                  className="w-7 h-7 text-green-400"
+                  className="w-7 h-7 text-green-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -263,7 +263,7 @@ export default function Mission() {
                 </svg>
               </div>
               <h3
-                className="text-xl md:text-2xl font-bold text-white leading-tight"
+                className="text-xl md:text-2xl font-bold text-gray-900 leading-tight"
                 style={{ margin: "0 0 0.5rem 0" }}
               >
                 Kakao Premium Bernilai Ekspor
