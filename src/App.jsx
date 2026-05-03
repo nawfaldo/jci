@@ -30,7 +30,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        {/* <Comparison /> */}
+        <Comparison />
         {/* <Mission /> */}
         {/* <CTA /> */}
       </main>

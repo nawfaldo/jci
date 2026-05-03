@@ -92,30 +92,31 @@ export default function Hero() {
                 className="text-gray-600 font-light text-[15px] leading-relaxed"
                 style={{ marginBottom: "14px" }}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor
+                The rarest cacao on earth. Java Criollo produces exceptionally
+                complex flavors with floral, fruity, and nutty notes — prized by
+                the world's finest chocolatiers.
               </p>
               <div className="flex justify-start" style={{ gap: "12px" }}>
                 <button
                   className="bg-[#5d8b44] text-white text-[14px] font-medium hover:bg-[#4d7537] rounded-none"
                   style={{ padding: "10px 24px" }}
                 >
-                  Lebih detail
+                  More detail
                 </button>
                 <button
                   className="border border-[#5d8b44] text-[#5d8b44] bg-transparent text-[14px] font-medium hover:bg-gray-50 rounded-none"
                   style={{ padding: "10px 24px" }}
                 >
-                  Beli
+                  Buy
                 </button>
               </div>
             </div>
             {/* Image (Bottom Center) */}
-            <img
+            {/* <img
               src={cacaoImg}
               alt="Cacao Pods"
               className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] max-w-[400px] object-cover object-top"
-            />
+            /> */}
           </motion.div>
 
           {/* Tanam Card */}
@@ -136,36 +137,37 @@ export default function Hero() {
                 className="text-[24px] sm:text-4xl font-semibold text-gray-900 tracking-tight"
                 style={{ marginBottom: "12px" }}
               >
-                Tanam
+                Plant Trees
               </h2>
               <p
                 className="text-gray-600 font-light text-[14px] leading-relaxed"
                 style={{ marginBottom: "14px" }}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor
+                Join the mission to rescue Java Criollo from extinction. Every
+                tree planted restores biodiversity and helps the planet recover
+                through regenerative agroforestry.
               </p>
               <div className="flex justify-start" style={{ gap: "12px" }}>
                 <button
                   className="bg-[#5d8b44] text-white text-[14px] font-medium hover:bg-[#4d7537] rounded-none"
                   style={{ padding: "10px 24px" }}
                 >
-                  Lebih detail
+                  More detail
                 </button>
                 <button
                   className="border border-[#5d8b44] text-[#5d8b44] bg-transparent text-[14px] font-medium hover:bg-gray-50 rounded-none"
                   style={{ padding: "10px 24px" }}
                 >
-                  Beli
+                  Plant
                 </button>
               </div>
             </div>
             {/* Image (Bottom Right) */}
-            <img
+            {/* <img
               src={plantImg}
               alt="Planting"
               className="absolute bottom-0 right-0 w-[95%] sm:w-[90%] max-w-[500px] object-contain translate-x-12 translate-y-16"
-            />
+            /> */}
           </motion.div>
         </div>
 
@@ -188,39 +190,40 @@ export default function Hero() {
           >
             <div className="z-20 w-full max-w-[340px] text-left">
               <h2
-                className="text-[24px] sm:text-4xl font-semibold text-white tracking-tight"
+                className="text-[24px] sm:text-4xl font-semibold text-black tracking-tight"
                 style={{ marginBottom: "12px" }}
               >
-                Karbon
+                Carbon
               </h2>
               <p
-                className="text-white/90 text-[14px] font-light leading-relaxed"
+                className="text-gray-600 text-[14px] font-light leading-relaxed"
                 style={{ marginBottom: "14px" }}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor
+                Our polyculture cacao forests actively absorb carbon. We
+                measure, verify, and sell carbon credits to international
+                companies committed to offsetting their emissions.
               </p>
               <div className="flex justify-start" style={{ gap: "12px" }}>
                 <button
                   className="bg-[#5d8b44] text-white text-[14px] font-medium hover:bg-[#4d7537] rounded-none"
                   style={{ padding: "10px 24px" }}
                 >
-                  Lebih detail
+                  More detail
                 </button>
                 <button
                   className="border border-[#5d8b44] text-[#5d8b44] bg-transparent text-[15px] font-medium hover:bg-gray-50 rounded-none"
                   style={{ padding: "10px 24px" }}
                 >
-                  Beli
+                  Buy
                 </button>
               </div>
             </div>
             {/* Carbon Factory Image (Bottom Left) */}
-            <img
+            {/* <img
               src={carbonImg}
               alt="Carbon Factory"
               className="absolute bottom-0 left-0 w-[110%] sm:w-[100%] max-w-[480px] object-contain z-10 translate-y-4 -translate-x-[2%]"
-            />
+            /> */}
           </div>
 
           {/* Right Content - Dashboard */}

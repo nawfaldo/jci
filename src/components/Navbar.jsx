@@ -53,7 +53,7 @@ export default function Navbar() {
         </div>
 
         {/* Right Side: Bag */}
-        <div className="flex items-center cursor-pointer hover:opacity-70 transition-opacity">
+        {/* <div className="flex items-center cursor-pointer hover:opacity-70 transition-opacity">
           <svg
             width="20"
             height="20"
@@ -69,7 +69,7 @@ export default function Navbar() {
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <path d="M16 10a4 4 0 0 1-8 0"></path>
           </svg>
-        </div>
+        </div> */}
       </div>
     </header>
   );
