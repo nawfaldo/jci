@@ -70,7 +70,7 @@ const maxCO2 = 19.2;
 
 export default function Comparison() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-200px" });
 
   const fadeUp = (delay = 0) => ({
     initial: { opacity: 0, y: 30 },
@@ -82,21 +82,21 @@ export default function Comparison() {
     <section
       id="comparison"
       ref={ref}
-      className="relative w-full overflow-hidden flex justify-center"
+      className="relative w-full flex justify-center"
       style={{
         paddingTop: "6rem",
         paddingBottom: "6rem",
       }}
     >
       <div
-        className="w-full max-w-[1280px] grid grid-cols-1 lg:grid-cols-[380px_720px]"
-        style={{ padding: "0 20px", gap: "4rem" }}
+        className="w-full max-w-[1280px] grid grid-cols-1 lg:grid-cols-[1fr_auto]"
+        style={{ gap: "4rem" }}
       >
-        {/* === LEFT: Title === */}
+        {/* === LEFT: Sticky Title === */}
         <motion.div
           {...fadeUp(0)}
           className="lg:sticky text-left"
-          style={{ alignSelf: "start" }}
+          style={{ alignSelf: "start", top: "6rem", paddingLeft: "20px" }}
         >
           <h2 className="font-display text-3xl sm:text-4xl md:text-[2.75rem] font-bold tracking-tight leading-[1.15] text-gray-900">
             Why{" "}
@@ -174,7 +174,7 @@ export default function Comparison() {
         </motion.div>
 
         {/* === RIGHT: Cards stacked vertically === */}
-        <div className="flex flex-col" style={{ gap: "1.5rem" }}>
+        <div className="flex flex-col w-[720px]" style={{ gap: "1.5rem" }}>
           {/* --- Card 1: Flavor & Obsession --- */}
           <motion.div
             {...fadeUp(0.2)}
@@ -328,8 +328,8 @@ export default function Comparison() {
                 style={{ marginTop: "0.5rem" }}
               >
                 Java Criollo's polyculture canopy and deep root system{" "}
-                <strong>outperforms industrial crops</strong> — even mangroves
-                — in locking CO₂ from the atmosphere.
+                <strong>outperforms industrial crops</strong> — even mangroves —
+                in locking CO₂ from the atmosphere.
               </p>
             </div>
 
@@ -407,9 +407,7 @@ export default function Comparison() {
                     >
                       <motion.div
                         initial={{ width: 0 }}
-                        animate={
-                          inView ? { width: `${percentage}%` } : {}
-                        }
+                        animate={inView ? { width: `${percentage}%` } : {}}
                         transition={{
                           duration: 0.8,
                           delay: 0.5 + i * 0.1,
