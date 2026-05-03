@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Comparison from "./components/Comparison";
 import Mission from "./components/Mission";
+import Progress from "./components/Progress";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 
@@ -32,6 +33,7 @@ export default function App() {
         <Hero />
         <Comparison />
         <Mission />
+        <Progress />
         {/* <CTA /> */}
       </main>
       {/* <Footer /> */}

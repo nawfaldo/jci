@@ -213,7 +213,7 @@ export default function Mission() {
               style={{ borderRadius: "1.5rem", height: "300px" }}
             >
               <img
-                src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=600&q=80"
+                src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Farmers working in cacao plantation"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
