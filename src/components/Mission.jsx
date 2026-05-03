@@ -3,278 +3,338 @@ import { motion, useInView } from "framer-motion";
 
 export default function Mission() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-200px" });
 
   const fadeUp = (delay = 0) => ({
     initial: { opacity: 0, y: 30 },
     animate: inView ? { opacity: 1, y: 0 } : {},
-    transition: { duration: 0.6, delay },
+    transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
   });
 
   return (
     <section
       id="mission"
       ref={ref}
-      className="relative px-6 w-full flex flex-col items-center justify-center"
-      style={{ paddingTop: "7rem", paddingBottom: "12rem" }}
+      className="relative w-full flex justify-center"
+      style={{ paddingTop: "6rem", paddingBottom: "6rem" }}
     >
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-green-50/60 blur-3xl pointer-events-none" />
-
-      <div className="relative w-full max-w-5xl mx-auto flex flex-col justify-center">
+      <div className="w-full max-w-[1280px]" style={{ padding: "0 20px" }}>
         {/* Header */}
-        <div className="text-center" style={{ marginBottom: "3.5rem" }}>
+        <div style={{ marginBottom: "3.5rem" }}>
           <motion.p
             {...fadeUp(0)}
-            className="text-(--color-emerald-light) text-xs tracking-[0.3em] uppercase font-semibold"
-            style={{ marginBottom: "1.25rem" }}
+            className="text-xs tracking-[0.3em] uppercase font-semibold"
+            style={{ color: "#047857", marginBottom: "1.25rem" }}
           >
-            Misi Kami
+            Our Mission
           </motion.p>
-          <motion.blockquote
-            {...fadeUp(0.15)}
-            className="font-display text-2xl sm:text-3xl md:text-4xl font-medium leading-snug tracking-tight text-(--color-text-primary)"
+          <motion.h2
+            {...fadeUp(0.1)}
+            className="font-display text-3xl sm:text-4xl md:text-[2.75rem] font-bold tracking-tight leading-[1.15] text-gray-900"
+            style={{ maxWidth: "600px" }}
           >
-            "Merevitalisasi Java Criollo langka melalui{" "}
-            <span className="text-gradient-emerald">
-              polikultur penyerap karbon
-            </span>{" "}
-            yang menghasilkan{" "}
-            <span className="text-gradient-gold">
-              kakao premium & kredit karbon
+            Five pillars driving{" "}
+            <span
+              style={{
+                background: "linear-gradient(135deg, #047857, #10b981)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              real impact
             </span>
-            ."
-          </motion.blockquote>
+          </motion.h2>
         </div>
 
         {/* ===== BENTO GRID ===== */}
         <div className="flex flex-col" style={{ gap: "1rem" }}>
-          {/* === ROW 1: hero image | stat number === */}
+          {/* === ROW 1: Image+Text hero | Text-only stat === */}
           <div
-            className="grid grid-cols-1 md:grid-cols-2"
+            className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr]"
             style={{ gap: "1rem" }}
           >
-            {/* Image + Text overlay */}
+            {/* Mission 1 — Image + Text overlay */}
             <motion.div
-              {...fadeUp(0.3)}
+              {...fadeUp(0.2)}
               className="relative overflow-hidden group"
-              style={{ borderRadius: "1.5rem", height: "380px" }}
+              style={{ borderRadius: "1.5rem", height: "400px" }}
             >
               <img
-                src="https://images.unsplash.com/photo-1511497584788-876760111969?w=800&q=80"
-                alt="Hutan penyerap karbon"
+                src="https://images.unsplash.com/photo-1511497584788-876760111969?w=900&q=80"
+                alt="Dense tropical forest canopy absorbing carbon"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
               <div
                 className="absolute inset-0 flex flex-col justify-end"
                 style={{ padding: "2rem" }}
               >
-                <h3
-                  className="text-2xl md:text-3xl font-bold text-white leading-tight"
-                  style={{ margin: "0 0 0.4rem 0" }}
+                <span
+                  className="font-mono uppercase font-bold"
+                  style={{
+                    fontSize: "0.6rem",
+                    letterSpacing: "0.2em",
+                    color: "rgba(255,255,255,0.5)",
+                    marginBottom: "0.5rem",
+                  }}
                 >
-                  Polikultur Penyerap Karbon
+                  Climate Action
+                </span>
+                <h3
+                  className="font-display font-bold text-white"
+                  style={{
+                    fontSize: "1.5rem",
+                    lineHeight: 1.25,
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  Ecological Restoration &<br />
+                  Climate Recovery
                 </h3>
                 <p
-                  className="text-sm text-white/65 leading-relaxed"
-                  style={{ margin: 0 }}
+                  style={{
+                    fontSize: "0.85rem",
+                    lineHeight: 1.6,
+                    color: "rgba(255,255,255,0.65)",
+                    maxWidth: "440px",
+                  }}
                 >
-                  Sistem agroforestri Java Criollo menyerap ribuan ton CO₂ dari
-                  lahan marginal Gunung Kidul.
+                  Transforming degraded marginal land into global carbon
+                  sanctuaries by planting trees that absorb up to{" "}
+                  <strong style={{ color: "rgba(255,255,255,0.9)" }}>
+                    15 tons of CO₂ per hectare
+                  </strong>{" "}
+                  every year.
                 </p>
               </div>
             </motion.div>
 
-            {/* Big stat — text only */}
+            {/* Mission 2 — Text-only card */}
             <motion.div
-              {...fadeUp(0.4)}
-              className="flex flex-col items-center justify-center text-center"
+              {...fadeUp(0.3)}
+              className="flex flex-col justify-between"
               style={{
                 borderRadius: "1.5rem",
-                height: "380px",
+                height: "400px",
                 padding: "2.5rem 2rem",
                 background: "#f5f5f7",
               }}
             >
-              <span
-                className="text-7xl md:text-[7rem] font-extrabold text-gray-900 font-display leading-none tracking-tight"
-                style={{ margin: "0 0 0.75rem 0" }}
-              >
-                4,800<span className="text-green-500">t</span>
-              </span>
-              <span
-                className="text-sm md:text-base text-gray-400 leading-relaxed"
-                style={{ margin: 0 }}
-              >
-                Ton CO₂ diserap — siap jual sebagai kredit karbon terverifikasi
-              </span>
+              <div>
+                <span
+                  className="font-mono uppercase font-bold"
+                  style={{
+                    fontSize: "0.6rem",
+                    letterSpacing: "0.2em",
+                    color: "#9ca3af",
+                  }}
+                >
+                  Farmer Welfare
+                </span>
+              </div>
+              <div>
+                <h3
+                  className="font-display font-bold text-gray-900"
+                  style={{
+                    fontSize: "1.35rem",
+                    lineHeight: 1.25,
+                    marginBottom: "0.75rem",
+                  }}
+                >
+                  Rural Farmer Prosperity
+                </h3>
+                <p
+                  className="text-gray-500"
+                  style={{ fontSize: "0.85rem", lineHeight: 1.6 }}
+                >
+                  Breaking the poverty cycle by providing capital and direct
+                  income from day one, freeing farmers from the 3-year harvest
+                  waiting crisis.
+                </p>
+              </div>
             </motion.div>
           </div>
 
-          {/* === ROW 2: dark text | image only | light stat === */}
+          {/* === ROW 2: Text-only | Image-only | Text-only === */}
           <div
             className="grid grid-cols-1 md:grid-cols-3"
             style={{ gap: "1rem" }}
           >
-            {/* Light text card */}
+            {/* Mission 3 — Text-only */}
             <motion.div
-              {...fadeUp(0.5)}
-              className="flex flex-col justify-end"
+              {...fadeUp(0.4)}
+              className="flex flex-col justify-between"
               style={{
                 borderRadius: "1.5rem",
-                height: "280px",
+                height: "300px",
                 padding: "2rem",
                 background: "#f5f5f7",
               }}
             >
-              <span
-                className="text-[10px] text-green-600 font-mono tracking-[0.2em] uppercase font-bold"
-                style={{ margin: "0 0 0.6rem 0" }}
-              >
-                Digital Monitoring
-              </span>
-              <h3
-                className="text-xl md:text-2xl font-bold text-gray-900 leading-tight"
-                style={{ margin: "0 0 0.4rem 0" }}
-              >
-                Transparansi IoT Real‑Time
-              </h3>
-              <p
-                className="text-sm text-gray-500 leading-relaxed"
-                style={{ margin: 0 }}
-              >
-                Setiap pohon Criollo dipantau — data terbuka untuk pembeli
-                karbon & kakao.
-              </p>
+              <div>
+                <span
+                  className="font-mono uppercase font-bold"
+                  style={{
+                    fontSize: "0.6rem",
+                    letterSpacing: "0.2em",
+                    color: "#9ca3af",
+                  }}
+                >
+                  Financial Justice
+                </span>
+              </div>
+              <div>
+                <h3
+                  className="font-display font-bold text-gray-900"
+                  style={{
+                    fontSize: "1.15rem",
+                    lineHeight: 1.25,
+                    marginBottom: "0.6rem",
+                  }}
+                >
+                  Radical Empathy
+                </h3>
+                <p
+                  className="text-gray-500"
+                  style={{ fontSize: "0.82rem", lineHeight: 1.6 }}
+                >
+                  Shifting financial risk from vulnerable smallholder farmers to
+                  the global community through the collaborative Adopt-A-Tree
+                  movement.
+                </p>
+              </div>
             </motion.div>
 
-            {/* Image only card */}
+            {/* Image-only — Cacao farmers at work */}
             <motion.div
-              {...fadeUp(0.6)}
+              {...fadeUp(0.5)}
               className="overflow-hidden group"
-              style={{ borderRadius: "1.5rem", height: "280px" }}
+              style={{ borderRadius: "1.5rem", height: "300px" }}
             >
               <img
-                src="https://images.unsplash.com/photo-1416169607655-0c2b3ce2e1cc?w=600&q=80"
-                alt="Kanopi hutan tropis"
+                src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=600&q=80"
+                alt="Farmers working in cacao plantation"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
             </motion.div>
 
-            {/* Stat card — text only */}
+            {/* Mission 4 — Text-only */}
             <motion.div
-              {...fadeUp(0.7)}
-              className="flex flex-col items-center justify-center text-center"
+              {...fadeUp(0.6)}
+              className="flex flex-col justify-between"
               style={{
                 borderRadius: "1.5rem",
-                height: "280px",
+                height: "300px",
                 padding: "2rem",
                 background: "#f5f5f7",
               }}
             >
-              <span
-                className="text-5xl md:text-6xl font-extrabold text-gray-900 font-display leading-none"
-                style={{ margin: "0 0 0.6rem 0" }}
-              >
-                250<span className="text-green-500">+</span>
-              </span>
-              <span
-                className="text-sm text-gray-400 leading-relaxed"
-                style={{ margin: 0 }}
-              >
-                Hektar lahan marginal menjadi kebun kakao produktif
-              </span>
+              <div>
+                <span
+                  className="font-mono uppercase font-bold"
+                  style={{
+                    fontSize: "0.6rem",
+                    letterSpacing: "0.2em",
+                    color: "#9ca3af",
+                  }}
+                >
+                  Biodiversity
+                </span>
+              </div>
+              <div>
+                <h3
+                  className="font-display font-bold text-gray-900"
+                  style={{
+                    fontSize: "1.15rem",
+                    lineHeight: 1.25,
+                    marginBottom: "0.6rem",
+                  }}
+                >
+                  Rare Biodiversity Preservation
+                </h3>
+                <p
+                  className="text-gray-500"
+                  style={{ fontSize: "0.82rem", lineHeight: 1.6 }}
+                >
+                  Saving the world's most premium and rarest cacao variety, Java
+                  Criollo, from the threat of extinction.
+                </p>
+              </div>
             </motion.div>
           </div>
 
-          {/* === ROW 3: image + text | dark text centered === */}
+          {/* === ROW 3: Image+Text overlay | Image-only === */}
           <div
             className="grid grid-cols-1 md:grid-cols-2"
             style={{ gap: "1rem" }}
           >
-            {/* Image + Text overlay */}
+            {/* Mission 5 — Image + Text overlay */}
             <motion.div
-              {...fadeUp(0.8)}
+              {...fadeUp(0.7)}
               className="relative overflow-hidden group"
-              style={{ borderRadius: "1.5rem", height: "320px" }}
+              style={{ borderRadius: "1.5rem", height: "340px" }}
             >
               <img
-                src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=800&q=80"
-                alt="Petani mitra"
+                src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80"
+                alt="Hands holding a growing plant from rich soil"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
               <div
                 className="absolute inset-0 flex flex-col justify-end"
                 style={{ padding: "2rem" }}
               >
-                <h3
-                  className="text-xl md:text-2xl font-bold text-white leading-tight"
-                  style={{ margin: "0 0 0.4rem 0" }}
+                <span
+                  className="font-mono uppercase font-bold"
+                  style={{
+                    fontSize: "0.6rem",
+                    letterSpacing: "0.2em",
+                    color: "rgba(255,255,255,0.5)",
+                    marginBottom: "0.5rem",
+                  }}
                 >
-                  Pemberdayaan 1,200 Petani
+                  Circular Economy
+                </span>
+                <h3
+                  className="font-display font-bold text-white"
+                  style={{
+                    fontSize: "1.35rem",
+                    lineHeight: 1.25,
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  Zero-Waste Circular Economy
                 </h3>
                 <p
-                  className="text-sm text-white/65 leading-relaxed"
-                  style={{ margin: 0 }}
+                  style={{
+                    fontSize: "0.85rem",
+                    lineHeight: 1.6,
+                    color: "rgba(255,255,255,0.65)",
+                    maxWidth: "400px",
+                  }}
                 >
-                  Pendapatan meningkat 3x melalui penjualan kakao premium &
-                  kredit karbon.
+                  Creating a zero-waste agricultural ecosystem where all harvest
+                  yields and waste become value-added products — from compost to
+                  export goods.
                 </p>
               </div>
             </motion.div>
 
-            {/* Light centered card */}
+            {/* Image-only — Tropical canopy */}
             <motion.div
-              {...fadeUp(0.9)}
-              className="flex flex-col items-center justify-center text-center"
-              style={{
-                borderRadius: "1.5rem",
-                height: "320px",
-                padding: "2.5rem 2rem",
-                background: "#f5f5f7",
-              }}
+              {...fadeUp(0.8)}
+              className="overflow-hidden group"
+              style={{ borderRadius: "1.5rem", height: "340px" }}
             >
-              <div
-                className="flex items-center justify-center"
-                style={{
-                  width: "3.5rem",
-                  height: "3.5rem",
-                  borderRadius: "50%",
-                  background: "rgba(34,197,94,0.15)",
-                  margin: "0 0 1.25rem 0",
-                }}
-              >
-                <svg
-                  className="w-7 h-7 text-green-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <h3
-                className="text-xl md:text-2xl font-bold text-gray-900 leading-tight"
-                style={{ margin: "0 0 0.5rem 0" }}
-              >
-                Kakao Premium Bernilai Ekspor
-              </h3>
-              <p
-                className="text-sm text-gray-500 leading-relaxed"
-                style={{ margin: 0, maxWidth: "280px" }}
-              >
-                Biji Java Criollo berkualitas tinggi untuk pasar cokelat premium
-                dunia.
-              </p>
+              <img
+                src="https://images.unsplash.com/photo-1416169607655-0c2b3ce2e1cc?w=800&q=80"
+                alt="Lush tropical tree canopy from below"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
             </motion.div>
           </div>
         </div>

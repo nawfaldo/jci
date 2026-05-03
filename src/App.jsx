@@ -31,7 +31,7 @@ export default function App() {
       <main>
         <Hero />
         <Comparison />
-        {/* <Mission /> */}
+        <Mission />
         {/* <CTA /> */}
       </main>
       {/* <Footer /> */}
